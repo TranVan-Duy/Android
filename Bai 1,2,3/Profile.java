@@ -2,8 +2,6 @@ package com.example.satff;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -13,23 +11,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
-    Handler handler;
+public class Profile extends AppCompatActivity {
+    ImageView phone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        handler=new Handler();
-        handler.postDelayed(new Runnable() {
+        setContentView(R.layout.activity_profile);
+        phone=findViewById(R.id.Phone);
+        phone.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                Intent myintent=new Intent(MainActivity.this,Profile.class);
-                startActivity(myintent);
-                finish();
+            public void onClick(View v) {
+                Intent intent=new Intent(Profile.this,Trang_Goi_Dien.class);
+                startActivity(intent);
             }
-        },2000);
-
-
+        });
     }
 }
